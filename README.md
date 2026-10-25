@@ -30,13 +30,13 @@ The DFE executes the digital down-conversion and data-packing pipelines. The pri
 
 All foundational hardware primitives and utility modules used by the primary pipelines (e.g., `Phase_Accumulator`, `Comparator`, `RCA`, `DFF`) can be found in the `src/foundation/` directory.
 
-<!--
-
 ## Testing
 
-Testing is performed via structural ModelSim testbenches located in the `tb/` directory. 
+Testing is performed via structural ModelSim testbenches located in the `tb/` directory. I will add the testbenches from time to time; if you need to verify the correctness of a module that doesn't have a tb yet, please [open an issue](../../issues/new).
 
+<!--
 Because we cannot synthesize the physical ADC, the testbenches act as a "Fake ADC." They inject pre-calculated arrays or read raw binary files representing the un-demodulated ADC output. You can run the testbenches to view the resulting waveforms, proving that the phase accumulation, complex mixing, and FIFO propagation maintain exact cycle-accurate timing and data sequence preservation.
+-->
 
 ## How to Use
 
