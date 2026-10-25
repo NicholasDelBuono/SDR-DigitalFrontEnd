@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
--- NCO: Numerically Controlled Oscillator
+-- NCO: Numerically Controlled Oscillator, to be implemented
 
 entity NCO is
     generic( 

@@ -1,10 +1,10 @@
-# SDR-DigitalFrontEnd
+# SDR - Digital Front-End
 
 This repository implements a Digital Front-End (DFE) hardware component for a Software Defined Radio (SDR) using VHDL. The design prioritizes a rigorous, structural approach, building foundational logic components (such as a generic N-bit Ripple-Carry Adder) from first principles rather than relying entirely on behavioral modeling.
 
 The architecture is heavily optimized for real-time digital signal processing, ensuring the resulting RTL can be efficiently synthesized and routed onto physical FPGA fabric.
 
-## System Architecture
+## General Architecture
 
 ![SDR Digital Front-End Architecture](Block_Schematic.png)
 
@@ -14,18 +14,21 @@ The top and bottom branches of the Digital Front-End part represent the In-phase
 
 The right side highlights the repository's core focus: the custom VHDL Digital Front-End.
 
-<!--
-
 ## Component Hierarchy
 
 The DFE executes the digital down-conversion and data-packing pipelines. The primary top-level modules (located in `src/`) include:
 
-*   **`NCO.vhd`:** (Numerically Controlled Oscillator) A parameterized phase accumulator and ROM lookup table that generates the local digital sine and cosine waves at IF - Intermediate Frequency, it uses the 
+*   **`NCO.vhd`:** (Numerically Controlled Oscillator) A parameterized phase accumulator and ROM lookup table that generates the local digital sine and cosine waves at the Intermediate Frequency (IF).
+
 *   **`ComplexMixer.vhd`:** Structural DSP multipliers that mix the incoming ADC data stream with the NCO outputs to separate the signal into In-Phase (I) and Quadrature (Q) baseband components.
-*   **`DecimationFilter.vhd`:** (Planned) Cascaded Integrator-Comb (CIC) and Finite Impulse Response (FIR) filters to low-pass filter the baseband signals and downsample the high ADC clock rate to a manageable USB transfer rate.
+
+*   **`CIC.vhd`, `FIR.vhd`:** Cascaded Integrator-Comb (CIC) and Finite Impulse Response (FIR) filters to low-pass filter the baseband signals and downsample the high ADC clock rate to a manageable USB transfer rate.
+
+*   **`IQ_Interleaver.vhd`:** A multiplexer that serializes the parallel In-Phase (I) and Quadrature (Q) data streams from the filters into a single interleaved bus for the FIFO buffer.
+
 *   **`FIFO.vhd`:** A fully generic, structurally generated asynchronous shift-register buffer (using a custom 2D array and `for...generate` loops) to safely pack and bridge data between the continuous DSP pipeline and burst-based PC interfaces.
 
-All of the utility modules used by the previously described ones (i.e. Phase_Accumulator, Comparator) can be found in the `src/utility/` directory.   
+All foundational hardware primitives and utility modules used by the primary pipelines (e.g., `Phase_Accumulator`, `Comparator`, `RCA`, `DFF`) can be found in the `src/foundation/` directory.
 
 <!--
 
@@ -44,12 +47,13 @@ Because we cannot synthesize the physical ADC, the testbenches act as a "Fake AD
 
 -->
 
-## State
+## Status
 
-As of today, this project is **under development**. 
-*   [ ] Generic Counters and Comparators
-*   [ ] Parameterized FIFO Buffer
-*   [ ] NCO / Phase Accumulator
-*   [ ] I/Q Complex Mixer
-*   [ ] CIC / FIR Decimation Filters
-*   [ ] Top-Level Pipeline Integration
+This project is currently **under development**. 
+
+*   [x] Utilities (Comparator, Data Flip-Flop, Ripple-Carry Adder, Phase Accumulator)
+*   [x] Parameterized FIFO Buffer (`FIFO.vhd`)
+*   [ ] NCO / ROM Lookup Table (`NCO.vhd`)
+*   [ ] I/Q Complex Mixer and Interleaver (`ComplexMixer.vhd`, `IQ_Interleaver.vhd`)
+*   [ ] CIC / FIR Decimation Filters (`CIC.vhd`, `FIR.vhd`)
+*   [ ] Top-Level Pipeline Integration (`DFE_Wrapper.vhd`)
