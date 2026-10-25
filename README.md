@@ -28,7 +28,7 @@ The DFE executes the digital down-conversion and data-packing pipelines. The pri
 
 *   **`FIFO.vhd`:** A fully generic, structurally generated asynchronous shift-register buffer (using a custom 2D array and `for...generate` loops) to safely pack and bridge data between the continuous DSP pipeline and burst-based PC interfaces.
 
-All foundational hardware primitives and utility modules used by the primary pipelines (e.g., `Phase_Accumulator`, `Comparator`, `RCA`, `DFF`) can be found in the `src/foundation/` directory.
+All utility modules used by the primary pipelines (e.g., `Phase_Accumulator`, `Comparator`, `RCA`, `DFF`) can be found in the `src/utility/` directory.
 
 ## Testing
 
