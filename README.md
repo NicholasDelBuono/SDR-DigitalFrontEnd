@@ -10,6 +10,8 @@ The architecture is heavily optimized for real-time digital signal processing, e
 
 The schematic illustrates the complete radio signal path. The left side represents the physical Analog Front-End (Antenna, LNA, RF Mixer, and Filters). Because standard hardware description languages cannot model continuous-time physical phenomena or analog components operating in linear regions, the Analog-to-Digital Converter (ADC) serves as the strict physical boundary for this project. 
 
+The top and bottom branches of the Digital Front-End part represent the In-phase and Quadrature components of a generic quadrature modulated signal.
+
 The right side highlights the repository's core focus: the custom VHDL Digital Front-End.
 
 <!--
