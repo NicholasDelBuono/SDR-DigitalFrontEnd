@@ -36,7 +36,6 @@ Testing is performed via structural ModelSim testbenches located in the `tb/` di
 
 <!--
 Because we cannot synthesize the physical ADC, the testbenches act as a "Fake ADC." They inject pre-calculated arrays or read raw binary files representing the un-demodulated ADC output. You can run the testbenches to view the resulting waveforms, proving that the phase accumulation, complex mixing, and FIFO propagation maintain exact cycle-accurate timing and data sequence preservation.
--->
 
 ## How to Use
 
