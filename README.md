@@ -18,7 +18,7 @@ The right side highlights the repository's core focus: the custom VHDL Digital F
 
 The DFE executes the digital down-conversion and data-packing pipelines. The primary top-level modules (located in `src/`) include:
 
-*   **`NCO.vhd`:** (Numerically Controlled Oscillator) A parameterized phase accumulator and ROM lookup table that generates the local digital sine and cosine waves at the Intermediate Frequency (IF).
+*   **`NCO_module/NCO.vhd`:** (Numerically Controlled Oscillator) A parameterized phase accumulator utilizing phase truncation and a shared ROM lookup table to generate local In-Phase and Quadrature (I/Q) digital waves.
 
 *   **`ComplexMixer.vhd`:** Structural DSP multipliers that mix the incoming ADC data stream with the NCO outputs to separate the signal into In-Phase (I) and Quadrature (Q) baseband components.
 
@@ -52,7 +52,7 @@ This project is currently **under development**.
 
 *   [x] Utilities (Comparator, Data Flip-Flop, Ripple-Carry Adder, Phase Accumulator)
 *   [x] Parameterized FIFO Buffer (`FIFO.vhd`)
-*   [ ] NCO / ROM Lookup Table (`NCO.vhd`)
+*   [x] NCO / ROM Lookup Table (`NCO_module/`)
 *   [ ] I/Q Complex Mixer and Interleaver (`ComplexMixer.vhd`, `IQ_Interleaver.vhd`)
 *   [ ] CIC / FIR Decimation Filters (`CIC.vhd`, `FIR.vhd`)
 *   [ ] Top-Level Pipeline Integration (`DFE_Wrapper.vhd`)
