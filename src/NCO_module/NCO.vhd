@@ -18,7 +18,7 @@ entity NCO is
 end entity;
 
 architecture struct of NCO is
-    component Phase_Accumulator is
+    component Accumulator is
         generic( Nbit : positive );
         port(
             di      : in std_logic_vector(Nbit-1 downto 0);
@@ -64,7 +64,7 @@ begin
 
     -- Vivado's syntetizer should collapse the two LUTs in a single ROM, so no hardware is wasted here
 
-    i_PHASE_ACC : Phase_Accumulator
+    i_ACC : Accumulator
         generic map( Nbit => PHASE_W )
         port map(
             di => fw,
