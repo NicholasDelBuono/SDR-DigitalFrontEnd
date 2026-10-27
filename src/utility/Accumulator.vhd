@@ -1,9 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
--- A phase accumulator
-
-entity Phase_Accumulator is
+entity Accumulator is
     generic( Nbit : positive := 32 );
     port(
         di      : in std_logic_vector(Nbit-1 downto 0);
@@ -14,9 +12,8 @@ entity Phase_Accumulator is
     );
 end entity;
 
-architecture struct of Phase_Accumulator is
-
-    component DFF
+architecture struct of Accumulator is
+    component DFF is
         generic( Nbit : positive );
         port(
             di      : in std_logic_vector(Nbit-1 downto 0);
@@ -27,7 +24,7 @@ architecture struct of Phase_Accumulator is
             do      : out std_logic_vector(Nbit-1 downto 0)
         );
     end component;
-    component RippleCarryAdder
+    component RCA is
         generic( Nbit : positive );
         port(
             a    : in std_logic_vector(Nbit-1 downto 0);
@@ -43,10 +40,8 @@ architecture struct of Phase_Accumulator is
     signal do_int : std_logic_vector(Nbit-1 downto 0);
 
 begin
-    i_RCA : RippleCarryAdder
-        generic map(
-            Nbit => Nbit
-        )
+    i_RCA : RCA
+        generic map( Nbit => Nbit )
         port map(
             a => di,
             b => do_int,
@@ -56,9 +51,7 @@ begin
             cout => open
         );
     i_DFF : DFF
-        generic map(
-            Nbit => Nbit
-        )
+        generic map( Nbit => Nbit )
         port map(
             di => s_int,
             en => '1',

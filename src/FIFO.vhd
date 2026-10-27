@@ -16,7 +16,7 @@ entity FIFO is
 end entity;
 
 architecture structural of FIFO is
-    component DFF_N is
+    component DFF is
         generic( Nbit : positive );
         port(
             di      : in std_logic_vector(Nbit-1 downto 0);
@@ -33,12 +33,9 @@ architecture structural of FIFO is
 
 begin
     g_DFF : for i in 1 to Mnum generate
-
         g_FIRST : if i = 1 generate
-            i_DFF : DFF_N
-                generic map(
-                    Nbit => Nbit
-                )
+            i_DFF : DFF
+                generic map( Nbit => Nbit )
                 port map(
                     di => di,
                     en => '1',
@@ -49,10 +46,8 @@ begin
         end generate;
 
         g_INTERNAL : if i > 1 and i < Mnum generate
-            i_DFF : DFF_N
-                generic map(
-                    Nbit => Nbit
-                )
+            i_DFF : DFF
+                generic map( Nbit => Nbit )
                 port map(
                     di => d_s(i-1),
                     en => '1',
@@ -63,10 +58,8 @@ begin
         end generate;
 
         g_LAST : if i = Mnum generate
-            i_DFF : DFF_N
-                generic map(
-                    Nbit => Nbit
-                )
+            i_DFF : DFF
+                generic map( Nbit => Nbit )
                 port map(
                     di => d_s(i-1),
                     en => '1',

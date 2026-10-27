@@ -1,8 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
--- A comparator for natural values
-
 entity Comparator is
     generic( Nbit : positive := 32 );
     port(
@@ -15,8 +13,7 @@ entity Comparator is
 end entity;
 
 architecture rtl of Comparator is
-
-    component RippleCarryAdder
+    component RCA is
         generic( Nbit : positive );
         port(
             a    : in std_logic_vector(Nbit-1 downto 0);
@@ -29,17 +26,15 @@ architecture rtl of Comparator is
     end component;
 
     signal e_int    : std_logic;
-    signal s_int    : std_logic_vector(Nbit-1 downto 0);
     signal cout_int : std_logic;
+    signal s_int    : std_logic_vector(Nbit-1 downto 0);
     signal b_inv    : std_logic_vector(Nbit-1 downto 0);
 
 begin
     b_inv <= not b;
 
-    i_RCA : RippleCarryAdder
-        generic map(
-            Nbit => Nbit
-        )
+    i_RCA : RCA
+        generic map( Nbit => Nbit )
         port map(
             a => a,
             b => b_inv,

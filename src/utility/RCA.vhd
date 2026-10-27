@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity RippleCarryAdder is
+entity RCA is
     generic( Nbit : positive := 32 );
     port (
         a    : in std_logic_vector(Nbit-1 downto 0);
@@ -13,9 +13,9 @@ entity RippleCarryAdder is
     );
 end entity;
 
-architecture beh of RippleCarryAdder is
+architecture beh of RCA is
 begin
-    p_ADDER: process(a, b, cin)
+    p_RCA: process(a, b, cin)
         variable c : std_logic;
     begin
         c := cin;
