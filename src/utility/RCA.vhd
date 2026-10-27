@@ -15,7 +15,7 @@ end entity;
 
 architecture beh of RCA is
 begin
-    p_RCA: process(a, b, cin)
+    p_RCA : process(a, b, cin)
         variable c : std_logic;
     begin
         c := cin;
@@ -26,6 +26,6 @@ begin
         end loop;
 
         cout <= c;
-    
+        
     end process;
 end architecture;
