@@ -60,8 +60,8 @@ This project is currently **under development**.
 
 *   [x] Utilities (Comparator, Data Flip-Flop, Ripple-Carry Adder, Phase Accumulator)
 *   [x] NCO / ROM Lookup Table (`NCO_module/`)
-*   [x] Mixer (`MixerBranch.vhd`)
-*   [x] CIC Decimation Filter (`CIC.vhd`: integrator, comb, modulo-`R` counter)
+*   [x] DigitalMixer (`DigitalMixer_module/`)
+*   [x] CIC Decimation Filter (`CIC_module/`: integrator, comb, modulo-`R` counter)
 *   [ ] FIR Filter (`FIR.vhd`)
 *   [ ] I/Q Interleaver (`IQ_Interleaver.vhd`)
 *   [ ] FIFO Buffer (`FIFO.vhd`: word storage, write/read pointers, full/empty flags)
