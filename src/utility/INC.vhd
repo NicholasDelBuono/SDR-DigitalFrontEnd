@@ -5,9 +5,10 @@ entity INC is
     generic( Nbit : positive := 32 );
     port(
         a    : in std_logic_vector(Nbit-1 downto 0);
+        cin  : in std_logic;
 
         s    : out std_logic_vector(Nbit-1 downto 0);
-        cout : out std_logic;
+        cout : out std_logic
     );
 end entity;
 
@@ -16,7 +17,7 @@ begin
     p_INC : process(a)
         variable c : std_logic;
     begin
-        c := '1';
+        c := cin;
 
         for i in s'reverse_range loop
             s(i) <= a(i) xor c;
