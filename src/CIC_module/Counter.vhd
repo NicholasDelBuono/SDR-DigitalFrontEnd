@@ -38,7 +38,8 @@ architecture struct of Counter is
         generic( Nbit : positive );
         port(
             a    : in std_logic_vector(Nbit-1 downto 0);
-        
+            cin  : in std_logic;
+
             s    : out std_logic_vector(Nbit-1 downto 0);
             cout : out std_logic
         );
@@ -56,6 +57,7 @@ begin
         generic map( Nbit => Nbit )
         port map(
             a => dff_out,
+            cin => '1',
             s => inc_out,
             cout => open
         );

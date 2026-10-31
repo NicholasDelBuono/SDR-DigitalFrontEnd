@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity Comb_Filter is
+entity CombFilter is
     generic( Nbit : positive := 32 );
     port(
         di      : in std_logic_vector(Nbit-1 downto 0);
@@ -13,7 +13,7 @@ entity Comb_Filter is
     );
 end entity;
 
-architecture struct of Comb_Filter is
+architecture struct of CombFilter is
     component DFF is
         generic( Nbit : positive );
         port(
