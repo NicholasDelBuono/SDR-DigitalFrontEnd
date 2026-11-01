@@ -63,6 +63,6 @@ This project is currently **under development**.
 *   [x] DigitalMixer (`DigitalMixer_module/`)
 *   [x] CIC Decimation Filter (`CIC_module/`: integrator, comb, modulo-`R` counter)
 *   [ ] FIR Filter (`FIR.vhd`)
-*   [ ] I/Q Interleaver (`IQ_Interleaver.vhd`)
+*   [x] I/Q Interleaver (`IQ_Interleaver.vhd`)
 *   [ ] FIFO Buffer (`FIFO.vhd`: word storage, write/read pointers, full/empty flags)
 *   [ ] Top-Level Pipeline Integration (`DFE_Wrapper.vhd`)
