@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity FIFO is
+entity DelayLine is
     generic(
         Nbit : positive := 32;
         Nstage : positive := 3
@@ -16,7 +16,7 @@ entity FIFO is
     );
 end entity;
 
-architecture structural of FIFO is
+architecture struct of DelayLine is
     component DFF is
         generic( Nbit : positive );
         port(
